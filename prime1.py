@@ -1,3 +1,5 @@
+#standard method
+
 def set_n(x="donkeys"):
     global n
     if x == "donkeys":
@@ -16,7 +18,7 @@ def isPrime(x):
         divisor -= 1
     return result
 
-def generate_prime_list():
+def gen_prime_list():
     global prime_list
     global n
     prime_list = []
@@ -44,6 +46,6 @@ def print_prime_list():
 
 def get(x = "donkeys"):
     set_n(x)
-    generate_prime_list()
+    gen_prime_list()
     print(results(), "They are: ")
     print(print_prime_list())
