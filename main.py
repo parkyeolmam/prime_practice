@@ -1,7 +1,8 @@
 def start():
+    global number_of_algorithms
     keep_going = True
     while keep_going:
-        n = input("Please select which prime algorithm to use, or type 'q' to quit.\n>>> ")
+        n = input("Please select which prime algorithm to use (1 to " + str(number_of_algorithms) + "), or type 'q' to quit.\n>>> ")
         print() #newline
         try:
             int(n)
