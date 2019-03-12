@@ -18,9 +18,13 @@ def gen_nonprime_list():
     global n
     
     for i in range(2, sqrt(n)):
+        if i % 10 == 0:
+            print("Filling multiples of", i)
         for j in range(2, n):
             nonprime_list.append(i*j)
+    print("Removing duplicates")
     nonprime_list = list(set(nonprime_list)) #remove duplicates
+    print("Sorting")
     nonprime_list.sort()
     return nonprime_list
 
@@ -31,9 +35,17 @@ def gen_prime_list():
     global prime_count
     prime_count = 0
     gen_nonprime_list()
+    print("Generating prime list.")
     prime_list = []
-    for i in range(2, n):
-        if i not in nonprime_list:
+    nonprime_count = 0
+    next_nonprime = nonprime_list[nonprime_count]
+    for i in range(2, n+1):
+        if i % 10000 == 0:
+            print("Filled primes up till", i)
+        if i == next_nonprime:
+            nonprime_count += 1
+            next_nonprime = nonprime_list[nonprime_count]
+        elif i != next_nonprime:
             prime_list.append(i)
             prime_count += 1
     return n
@@ -44,7 +56,7 @@ def results():
     if prime_count == 1:
         return "There is only 1 prime between 1 and " + str(n) + "."
     else:
-        return "There are " + str(prime_count) + " primes between 1 and " + str(n) + "."
+        return "There are " + str(prime_count) + " primes between 1 and " + str(n) + ".\n"
 
 def print_prime_list():
     global prime_list
@@ -56,5 +68,7 @@ def print_prime_list():
 def get(x = "donkeys"):
     set_n(x)
     gen_prime_list()
-    print(results(), "They are: ")
-    print(print_prime_list())
+    #print(print_prime_list())
+    print(results())
+    
+
