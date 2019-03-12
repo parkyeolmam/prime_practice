@@ -1,5 +1,3 @@
-#standard method
-
 def set_n(x="donkeys"):
     global n
     if x == "donkeys":
@@ -11,6 +9,8 @@ def set_n(x="donkeys"):
 def isPrime(x):
     result = True #innocent until proven guilty
     divisor = x - 1
+    if x % 1000 == 0:
+        print("Checked up till", x)
     while divisor > 1:
         if x % divisor == 0:
             result = False
@@ -18,9 +18,11 @@ def isPrime(x):
         divisor -= 1
     return result
 
-def gen_prime_list():
+def gen_prime_list(x = "donkeys"):
     global prime_list
     global n
+    if x != "donkeys":
+        n = x
     prime_list = []
     for i in range(2, n):
         if isPrime(i):
@@ -35,7 +37,7 @@ def results():
     if prime_count == 1:
         return "There is only 1 prime between 1 and " + str(n) + "."
     else:
-        return "There are " + str(prime_count) + " primes between 1 and " + str(n) + "."
+        return "There are " + str(prime_count) + " primes between 1 and " + str(n) + ".\n"
 
 def print_prime_list():
     global prime_list
@@ -47,5 +49,6 @@ def print_prime_list():
 def get(x = "donkeys"):
     set_n(x)
     gen_prime_list()
-    print(results(), "They are: ")
-    print(print_prime_list())
+    #print(print_prime_list())
+    print(results())
+
